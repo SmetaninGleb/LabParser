@@ -52,6 +52,7 @@ public class Main extends Application {
             for(int j = 0; j < SizeY; j ++){
                 field.get(i).set(j, new Item());
                 field.get(i).get(j).onCreate();
+
                 field.get(i).get(j).toRightB.setLayoutX(50+j*50);
                 field.get(i).get(j).toRightB.setLayoutY(30+i*50);
                 field.get(i).get(j).toRightB.setScaleX(0.5);
@@ -62,8 +63,14 @@ public class Main extends Application {
                 field.get(i).get(j).toDownB.setScaleX(3);
                 field.get(i).get(j).toDownB.setScaleY(0.3);
 
+                field.get(i).get(j).isCubeB.setLayoutX(25+j*50);
+                field.get(i).get(j).isCubeB.setLayoutY(25+i*50);
+                field.get(i).get(j).isCubeB.setScaleX(2);
+
+
                 winGroup.getChildren().add(field.get(i).get(j).toDownB);
                 winGroup.getChildren().add(field.get(i).get(j).toRightB);
+                winGroup.getChildren().add(field.get(i).get(j).isCubeB);
             }
         }
     }
