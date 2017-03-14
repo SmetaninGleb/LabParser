@@ -85,7 +85,7 @@ public class Action extends Application {
         for(int i = 0; i < fieldXSize; i++){
             field.add(i, new ArrayList<LabParserItem>());
             for(int j = 0; j < fieldYSize; j++){
-                field.get(i).add(j, new LabParserItem(i * 55, j * 55));
+                field.get(i).add(j, new LabParserItem(i * 55, j * 58));
                 fieldShowGroup.getChildren().addAll(field.get(i).get(j).toForwardBtn,
                         field.get(i).get(j).toRightBtn, field.get(i).get(j).toBackBtn,
                         field.get(i).get(j).toLeftBtn, field.get(i).get(j).isCubeHereBtn);
@@ -103,25 +103,28 @@ public class Action extends Application {
             @Override
             public void handle(ActionEvent event)  {
 
+                System.out.print(field.get(0).get(0).labItem.toRight.isWallIsHere());
+
                 for(int i = 0; i < fieldXSize; i ++){
                     mainField.add(i, new ArrayList<LabItem>());
                     for(int j = 0; j < fieldYSize; j ++){
-                        mainField.get(i).add(j, field.get(i).get(j).labItem);
+                        mainField.get(i).add(j, field.get(i).get(fieldYSize - j - 1).labItem);
                     }
                 }
 
+                System.out.print(mainField.get(0).get(0).toRight.isWallIsHere());
+
                 try {
-                    parseToFile(mainField);
+                    objectOutputStream.writeObject(mainField);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                System.exit(0);
             }
         });
         fieldShowGroup.getChildren().add(enterButton);
 
     }
 
-    private void parseToFile(ArrayList<ArrayList<LabItem>> mainField) throws IOException {
-        objectOutputStream.writeObject(mainField);
-    }
 }
