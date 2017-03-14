@@ -101,7 +101,7 @@ public class Action extends Application {
         ArrayList<ArrayList<LabItem>> mainField = new ArrayList<ArrayList<LabItem>>();
         enterButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
+            public void handle(ActionEvent event)  {
 
                 for(int i = 0; i < fieldXSize; i ++){
                     mainField.add(i, new ArrayList<LabItem>());
@@ -110,6 +110,11 @@ public class Action extends Application {
                     }
                 }
 
+                try {
+                    parseToFile(mainField);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         fieldShowGroup.getChildren().add(enterButton);
