@@ -86,6 +86,7 @@ public class LabParserItem {
         labItem.toBack.setWallIsHere(false);
         labItem.toLeft.setNothingAboutWallHere(false);
         labItem.toLeft.setWallIsHere(false);
+        labItem.isCubeHere = false;
     }
 
     private void setOpacityBtn(){
